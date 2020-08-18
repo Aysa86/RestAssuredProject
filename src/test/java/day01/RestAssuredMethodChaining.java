@@ -49,4 +49,32 @@ public class RestAssuredMethodChaining {
         header("Content-Type",is("text/plain;charset=UTF-8" )).
         body(is("Hello from Sparta"));
     }
+
+    @DisplayName("Testing GET /api/spartans endpoint")
+    @Test
+    public void testAllSpartans(){
+
+        // given part ==> Request Specification
+             // you can add info like header, query params, path variable, body
+             // if this request need authentication, it also goes to give section
+        // when part ==> Send Request(GET POST PATCH PUT)
+             //  --Get response
+        // then part -- ValidatableResponse
+             // this is where assertions start
+             // you can chain multiple assertions
+             // if any assertions fail , whole test fail.
+
+     given(). // add all your request specific information like header, query param, path var, body
+             header("Accept", "application/xml").
+     when().
+             get("http://100.25.162.89:8000/api/spartans").
+             prettyPeek().
+     then().
+             statusCode(is(200));
+    }
+
+
+
+
+
 }
