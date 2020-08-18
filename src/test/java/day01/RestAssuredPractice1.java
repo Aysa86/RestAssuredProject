@@ -1,8 +1,7 @@
 package day01;
 
-import io.restassured.RestAssured;
+
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -64,6 +63,61 @@ public class RestAssuredPractice1 {
        assertEquals("text/plain;charset=UTF-8", response.getHeader("Content-Type"));
        // testing the Content-length header value is 17
        assertEquals("17", response.header("Content-Length"));
+
+   }
+
+   @DisplayName("Testing /hello endpoint body")
+   @Test
+    public void testingHelloResponseBody(){
+       // get the body and assert the body equal to Hello from Sparta
+       Response response =  get("http://100.25.162.89:8000/api/hello");
+
+       // getting the body as String
+       System.out.println(response.asString()); // Hello from Sparta
+
+       // getting the body by calling body method
+       System.out.println(response.body().asString()); // Hello from Sparta
+
+       // assert the body is Hello from Sparta, length is 17
+       String helloBody = response.asString();
+
+       assertEquals("Hello from Sparta", helloBody); // Hello from Sparta
+       assertEquals(17, helloBody.length()); // length is 17
+
+   }
+   @DisplayName("Printing the response body using method")
+   @Test
+    public void printingBody(){
+
+       Response response =  get("http://100.25.162.89:8000/api/hello");
+
+       // easy way to print the response body and return at the same time
+       response.prettyPrint(); // Hello from Sparta
+
+       System.out.println("=====================================");
+
+       // another way to see body quick is prettyPeek()
+       // it prints out the entire response
+       // it will include all header, status code, body
+       // important!!! It returns same response Object rather than String like prettyPrint()
+       // it will enable you to call more methods of response Object after peeking
+       response.prettyPeek(); // HTTP/1.1 200
+                              // Content-Type: text/plain;charset=UTF-8
+                              // Content-Length: 17
+                              //Date: Tue, 18 Aug 2020 18:35:52 GMT
+                              // Hello from Sparta
+
+       System.out.println("======================================");
+
+       // to see entire response + save the status code into a variable in same statement
+
+       int statusCode =  response.prettyPeek().statusCode();
+       System.out.println("PRINTING ONLY STATUS CODE " + statusCode);
+
+
+
+
+
 
    }
 
