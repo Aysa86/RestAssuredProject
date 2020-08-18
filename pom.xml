@@ -28,14 +28,25 @@
         </plugins>
     </build>
 
-    <!-- JUnit 5 dependencies -->
+
     <dependencies>
 
+        <!-- JUnit 5 dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.7.0-M1</version>
         </dependency>
+
+        <!-- restAssured dependency -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+
 
     </dependencies>
 </project>
