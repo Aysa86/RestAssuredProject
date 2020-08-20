@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.is;
 
 public class SpartanTest2 {
@@ -15,6 +16,25 @@ public class SpartanTest2 {
         RestAssured.baseURI = "http://100.25.162.89:8000";
         RestAssured.basePath = "/api";
     }
+
+    @DisplayName("Get one Spartan test")
+    @Test
+    public void testSingleSpartan(){
+
+        // I want to log the request I sent so I see what is the URL, methods and so on
+        given()
+                .log().all().
+        when()
+                .get("/spartans/107").
+               // .prettyPeek().
+        then()
+                .log().all()  //to get everything from response
+               // .log().body() // getting only the body of response
+                //.log().status() // HTTP/1.1 200
+                .statusCode(is(200));
+    }
+
+
 
 
 
