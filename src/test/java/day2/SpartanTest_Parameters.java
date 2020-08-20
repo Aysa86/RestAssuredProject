@@ -36,9 +36,9 @@ public class SpartanTest_Parameters {
 
         given()
                 .log().all().
-                when()
+        when()
                 .get("/spartans/{id}", 107).
-                then()
+        then()
                 .statusCode(is(200));
     }
 
