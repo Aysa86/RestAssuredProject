@@ -20,7 +20,7 @@ public class OpenMovieDBTest {
         given()
                 .log().all()
                 .queryParam("apikey", "de46cef4")
-                .queryParam("i", "tt3896198")
+                .queryParam("t", "Guardians of the Galaxy Vol. 2")
                 .queryParam("plot", "full").
         when()
                 .get(). // url is already specified that's why do nothing, just empty get()
