@@ -4,6 +4,8 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.* ;
@@ -50,6 +52,8 @@ public class ExtractingDataUsingJsonPathMethods {
         // Since our result is a Json Object with key and value pair
         // we can directly call getMap method and provide the path
         // store the whole thing into a Map object
+        // empty String as Json path means root path
+        // we can also use $ sign to specify
        Map <String, Object> responseMap = jp.getMap("");
         System.out.println("responseMap = " + responseMap);
 
@@ -67,6 +71,22 @@ public class ExtractingDataUsingJsonPathMethods {
          */
         Map<String,Object> firstRatingMap =  jp.getMap("Ratings[0]") ;
         System.out.println("firstRatingMap = " + firstRatingMap);
+
+        // above code is doing below when getMap method is being called
+      //  Map<String , Object> manualMap = new HashMap<>();
+        //manualMap.put("Source", "Internet Movie Database");
+       // manualMap.put("Value", "7.6/10");
+
+
+        // I want to store all the Source of ratings into list of String
+        // your result should be ["Internet Movie Database", "Rotten Tomatoes", "Metacritic"]
+        // JsonPath getList method will store items in jsonArray into the list
+        
+        // get me the list of Source field of the Ratings jsonArray from the response
+       List<String> sourceList =  jp.getList("Ratings.Source");
+        System.out.println("sourceList = " + sourceList);
+
+
 
 
 
