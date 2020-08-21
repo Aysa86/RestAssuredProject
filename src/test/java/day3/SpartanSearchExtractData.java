@@ -14,7 +14,7 @@ import static io.restassured.matcher.RestAssuredMatchers.* ;
 import static org.hamcrest.Matchers.*;
 
 public class SpartanSearchExtractData {
-    @DisplayName("Search Spartans")
+
     @BeforeAll
     public static void setUp() {
 
