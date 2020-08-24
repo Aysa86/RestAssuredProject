@@ -13,6 +13,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PostRequestTest {
 
@@ -73,6 +75,25 @@ public class PostRequestTest {
     @DisplayName("Posting with Map object as body")
     @Test
     public void testPostWithMapAsBody(){
+
+        Map<String, Object> bodyMap = new HashMap<>(); // LinkedHashMap will keep an order of insertions
+        bodyMap.put("name", "Edward");
+        bodyMap.put("gender", "Male");
+        bodyMap.put("phone", 1928374650);
+
+        System.out.println(bodyMap);
+
+        given()
+                .log().all()
+                .contentType(ContentType.JSON)
+                .body(bodyMap).// jackson-data-bind turn your java map into json here
+        when()
+                .post("/spartans").
+        then()
+                .log().all()
+                .statusCode(201);
+
+
 
 
 
