@@ -70,4 +70,13 @@ public class PostRequestTest {
 
     }
 
+    @DisplayName("Posting with Map object as body")
+    @Test
+    public void testPostWithMapAsBody(){
+
+
+
+
+    }
+
 }
