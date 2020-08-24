@@ -1,11 +1,9 @@
 package day04;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 
 import com.github.javafaker.Faker;
-import io.restassured.RestAssured;
+
 import static io.restassured.RestAssured.* ;
 import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.api.BeforeAll;
@@ -91,12 +89,8 @@ public class PostRequestTest {
                 .post("/spartans").
         then()
                 .log().all()
-                .statusCode(201);
-
-
-
-
-
+                .statusCode(201)
+                .body("data.name", is("Edward"));
 
     }
 
