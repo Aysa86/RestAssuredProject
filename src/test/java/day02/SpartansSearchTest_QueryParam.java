@@ -1,11 +1,10 @@
-package day2;
+package day02;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.* ;
-import static io.restassured.matcher.RestAssuredMatchers.* ;
 import static org.hamcrest.Matchers.*;
 public class SpartansSearchTest_QueryParam {
     @BeforeAll

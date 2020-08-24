@@ -1,16 +1,14 @@
-package day3;
+package day03;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.* ;
-import static io.restassured.matcher.RestAssuredMatchers.* ;
-import static org.hamcrest.Matchers.*;
+
 public class ExtractingDataUsingJsonPathMethods {
 
     @DisplayName("Getting Movie info")
