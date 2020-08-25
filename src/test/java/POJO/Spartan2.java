@@ -1,5 +1,9 @@
 package POJO;
 
+import io.restassured.response.Response;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 public class Spartan2 {
 
     private int id;
@@ -62,5 +66,7 @@ public class Spartan2 {
                 ", phone=" + phone +
                 '}';
     }
+
+
 
 }
