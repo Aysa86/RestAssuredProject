@@ -42,6 +42,13 @@ public class HR_ORDS_Test {
 
         // send a request to /regions endpoint to get all regions
         // save the regions json array into Pojo List
+        // you already have taken care of unknown properties so no extra action needed
+        // just call the method of jsonPath object to get the list you want
+//        Response response = given()
+//                                .log().all()
+//                                .accept(ContentType.JSON).
+//                        when()
+//                                .get("/regions") ;
         Response response = get("/regions").prettyPeek();
 
 
