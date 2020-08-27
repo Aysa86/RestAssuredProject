@@ -68,6 +68,13 @@ public class HR_ORDS_POJO_Test {
             System.out.println("each = " + each);
         }
         
+        // we want to get a List of pojo but we only want to get those
+        //data with country_id as US
+        List<Locations> usLocations = 
+        response.jsonPath().getList("items.findAll{ it.country_id == 'US' }", Locations.class);
+      //  System.out.println("usLocations = " + usLocations);
+        usLocations.forEach(eachLocation -> System.out.println(eachLocation));
+        
     }
 
 

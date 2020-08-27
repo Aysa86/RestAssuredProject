@@ -45,6 +45,12 @@ public class LibraryAppTest {
 // and return json response as user information and authority
 // assert the email of user is same as the email you used the token
 
+
+    // LOGIN AND DECODE REQUEST DOES NOT NEED ANY AUTHENTICATION
+    // LOGIN --->> GENERATE TOKEN
+    // DECODE --->> TAKE A TOKEN AND DECODE ITS INFO
+    // WE DO NOT NEED TO ADD HEADER YOUR LONG TOKEN TO AUTHORIZE THIS REQUEST
+
     @DisplayName("Test for /decode endpoint")
     @Test
     public void testDecodeEndpoint(){
@@ -63,12 +69,29 @@ public class LibraryAppTest {
                 .body("full_name", is("Test Librarian 69"))
                 .body("email", is("librarian69@library"))
                 .body("user_group_id", is("2"))
-                .body("token", is(libraryToken))
+                .body("token", is(libraryToken));
+    }
 
+    @DisplayName("Test /get_user_by_id/{id} Endpoint")
+    @Test
+    public void testSingleUserDate(){
 
-
-        ;
-
+        given()
+                .log().all()
+                .header("x-library-token", libraryToken)
+                .pathParam("id", 2080).
+        when()
+                .get("/get_user_by_id/{id}").
+        then()
+                .log().all()
+                .statusCode(is(200))
+                .body("id", is("2080"))
+                .body("full_name", is("Test Student 142"))
+                .body("email", is("student142@library"))
+                .body("user_group_id", is("3"))
+                .body("image", is(nullValue())) // this is how to check null value
+                .body("extra_data", is(nullValue()))
+                ;
 
 
 
