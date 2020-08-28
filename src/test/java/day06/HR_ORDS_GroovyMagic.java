@@ -72,6 +72,21 @@ public class HR_ORDS_GroovyMagic {
         List<String> phoneNumber = jp.getList("items.findAll{it.department_id == 90}.phone_number");
         System.out.println("phoneNumber = " + phoneNumber);
 
+        // max, min
+        // find out max and min salary
+        int maxSalary = jp.getInt("items.max{it.salary}.salary");
+        System.out.println("maxSalary = " + maxSalary);
+
+        int minSalary = jp.getInt("items.min{it.salary}.salary");
+        System.out.println("minSalary = " + minSalary);
+
+        // find out the name of the guy who makes max salary
+        String richGuy = jp.getString("items.max{it.salary}.first_name");
+        System.out.println("richGuy = " + richGuy);
+
+        // find out the name of the guy who makes min salary
+        String NotRichGirl = jp.getString("items.min{it.salary}.first_name");
+        System.out.println("NotRichGirl = " + NotRichGirl);
     }
 
 
