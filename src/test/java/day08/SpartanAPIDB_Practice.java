@@ -36,7 +36,7 @@ public class SpartanAPIDB_Practice {
 
     @BeforeAll
     public static void setUp(){
-        RestAssured.baseURI = "http://54.174.216.245" ;
+        RestAssured.baseURI = "http://100.25.162.89" ;
         RestAssured.port = 8000 ;
         RestAssured.basePath = "/api";
 
@@ -117,6 +117,9 @@ public class SpartanAPIDB_Practice {
         List<String> idListFromDB = DB_Utility.getColumnDataAsList(1);
 
         assertEquals(idListFromDB.size(), IDsListFromResponse.size());
+
+        // how to assert that 2 lists have same content
+        assertEquals(idListFromDB, IDsListFromResponse);
 
 
     }
