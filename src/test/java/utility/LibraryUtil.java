@@ -1,5 +1,6 @@
 package utility;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -7,6 +8,24 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.*;
 
 public class LibraryUtil {
+
+    public static String setUpRestAssuredAndDB_forEnvironment(String environment){
+
+         RestAssured.baseURI = ConfigurationReader.getProperty(environment + ".base_url");
+         RestAssured.basePath = "/rest/v1" ; // we can move it to configuration.properties too
+
+         DB_Utility.createConnection(environment);
+
+        return LibraryUtil.loginAndGetToken(ConfigurationReader.getProperty(environment +".librarian_username"),
+                ConfigurationReader.getProperty(environment + ".librarian_password"));
+
+
+
+    }
+
+
+
+
 
     // we want to keep the method that getToken in here
     // so we don't have to copy paste anymore

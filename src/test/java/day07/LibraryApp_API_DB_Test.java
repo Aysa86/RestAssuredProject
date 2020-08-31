@@ -16,15 +16,12 @@ public class LibraryApp_API_DB_Test {
     private  static String libraryToken;
     @BeforeAll
     public static void setUp(){
+     String active_env = ConfigurationReader.getProperty("active_env");
+     libraryToken = LibraryUtil.setUpRestAssuredAndDB_forEnvironment(active_env);
 
-        RestAssured.baseURI = ConfigurationReader.getProperty("library1.base_url");
-        RestAssured.basePath = "/rest/v1" ; // we can move it to configuration.properties too
-        libraryToken = LibraryUtil.loginAndGetToken(ConfigurationReader.getProperty("library1.librarian_username"),
-                                                   ConfigurationReader.getProperty("library1.librarian_password"));
-
-        DB_Utility.createConnection("library1");
     }
-    
+
+
     @Test
     public void test(){
         System.out.println("libraryToken = " + libraryToken);
