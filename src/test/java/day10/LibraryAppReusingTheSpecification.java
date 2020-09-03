@@ -53,7 +53,7 @@ We want to save the Response spec for
 
     @DisplayName("Testing GET /get_book_categories Endpoint with spec")
     @Test
-    public void testLibrary(){
+    public void testGetBookCategories(){
 
         given()
                 .spec(requestSpec).
@@ -68,6 +68,12 @@ We want to save the Response spec for
     @Test
     public void testGetAllUsers(){
         given().spec(requestSpec).when().get("/get_all_users").then().spec(responseSpec);
+    }
+
+    @DisplayName("Testing GET /dashboard_stats Endpoint with spec")
+    @Test
+    public void testGetDashboardStats(){
+        given().spec(requestSpec).when().get("/dashboard_stats").then().spec(responseSpec);
     }
 
 }
