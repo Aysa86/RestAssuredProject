@@ -54,6 +54,22 @@ public class LibraryAppReusingTheSpecification_Shorter {
         
         List<Category> listOfCategories = jp.getList("", Category.class);
         System.out.println("listOfCategories = " + listOfCategories);
+        
+        // what if I want to store each category as Map rather than POJO?
+        // each category is a key value pair --> Map
+        // and we have many category --> List<Map>
+        // jsonPath methods always try to help to convert the types where it can
+        // in this case, each category in jsonArray we tried to store into Map
+        // then get a list out of it
+        // and Jackson databind takes care of all conversions
+      //   List<Map<String, String>> categoryMapList = jp.getList("");
+        List<Map<Integer, String>> categoryMapList = jp.getList("");
+        System.out.println("categoryMapList = " + categoryMapList);
+        
+        
+        
+        
+        
     }
 
 
