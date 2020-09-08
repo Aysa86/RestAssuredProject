@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utility.ConfigurationReader;
 
+import java.io.File;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 import static io.restassured.RestAssured.*;
@@ -29,6 +31,22 @@ public class SchemaValidationTest {
                 .get("/spartans").
         then()
                 .body(matchesJsonSchemaInClasspath("AllSpartansSchema.json"));
+    }
+
+    @DisplayName("Testing GET /spartans response against Schema in root path")
+    @Test
+    public void testGetAllSpartansSchemaInRootPath(){
+        // we need to provide right path so to do that
+        // we create a file Object that point to the schema
+        // use matchesJsonSchema method that accept a file
+        // and do our validation
+
+        File mySchema = new File("AllSpartansSchema2.json");
+
+        when()
+                .get("/spartans").
+        then()
+                .body(matchesJsonSchema(mySchema));
 
 
     }
@@ -45,6 +63,8 @@ public class SchemaValidationTest {
                 .body(matchesJsonSchemaInClasspath("SearchSchema.json"));
 
     }
+
+
 
 
 }
