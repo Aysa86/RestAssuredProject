@@ -27,7 +27,6 @@ public class RestAssuredPractice1 {
        // Status code of this response: 200
 
        System.out.println( "Getting status line of this response " + response.getStatusLine() );
-
        // Getting status line of this response HTTP/1.1 200
 
        // in restAssured there are usually 2 methods that does same action
@@ -75,12 +74,12 @@ public class RestAssuredPractice1 {
        // getting the body as String
        System.out.println(response.asString()); // Hello from Sparta
 
-       // getting the body by calling body method
+       // getting the body by calling body method, body() gives Object and hashcode, that's why we need asString method
        System.out.println(response.body().asString()); // Hello from Sparta
 
        // assert the body is Hello from Sparta, length is 17
        String helloBody = response.asString();
-
+                                                // response.asString() calling directly, without saving into variable
        assertEquals("Hello from Sparta", helloBody); // Hello from Sparta
        assertEquals(17, helloBody.length()); // length is 17
 
