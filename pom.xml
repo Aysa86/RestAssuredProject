@@ -4,11 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- This is for instructing always to build with Java 8 anywhere -->
+    <!-- This is for instructing to always build with Java 8 anywhere -->
     <groupId>com.cybertek</groupId>
     <artifactId>RestAssuredProject</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <!-- This is for instructing to always build with Java 8 anywhere,
+    by default maven thinks we will use Java 5, that why we need this plugin  -->
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -31,7 +32,7 @@
 
     <dependencies>
 
-        <!-- JUnit 5 dependencies -->
+        <!-- JUnit 5 dependencies doesn't matter which version-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
