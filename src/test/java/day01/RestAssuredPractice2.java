@@ -63,13 +63,20 @@ public class RestAssuredPractice2 {
     @Test
     public void test2(){
         List<Integer> numList = Arrays.asList(11,44,3,55,88,5) ;
+
         // checking the list size is 6
         assertThat(numList, hasSize(6) );
         assertThat(numList.size(), is(6));
+
         // checking the list contains 11
         assertThat(numList, hasItem(11));
+
+        // hasItems is used to check multiple items
+        assertThat(numList, hasItems(88, 3, 11));
+
         // checking the list contains all items in any order
         assertThat(numList, containsInAnyOrder(11,5,44,3,55,88));
+
         // checking the list contains all items in exact order
         // contains method works like equals
         assertThat(numList, contains(11,44,3,55,88,5));
