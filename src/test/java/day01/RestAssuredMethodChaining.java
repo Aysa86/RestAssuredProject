@@ -28,11 +28,11 @@ public class RestAssuredMethodChaining {
            // validate something here
        // http://100.25.162.89:8000/api/hello
 
-        when().
-                get("http://100.25.162.89:8000/api/hello"). // sending request to this url
-        then().           // assertion starts here
-                statusCode(200). // assert status code is 200
-        header("Content-Length", "17"); // assert header is 17
+        when()
+                .get("http://100.25.162.89:8000/api/hello"). // sending request to this url
+        then()           // assertion starts here
+                .statusCode(200) // asserting status code is 200
+                .header("Content-Length", "17"); // asserting header is 17
 
     }
 
@@ -59,7 +59,7 @@ public class RestAssuredMethodChaining {
              // if this request need authentication, it also goes to give section
         // when part ==> Send Request(GET POST PATCH PUT)
              //  --Get response
-        // then part -- ValidatableResponse
+        // then part -- Validatable Response
              // this is where assertions start
              // you can chain multiple assertions
              // if any assertions fail , whole test fail.
